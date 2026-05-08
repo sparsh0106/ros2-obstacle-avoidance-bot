@@ -1,0 +1,154 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <world name="obstacle_world">
+
+    <light type="directional" name="soft_light">
+      <cast_shadows>false</cast_shadows>
+      <pose>0 0 8 0 0 0</pose>
+      <diffuse>0.9 0.9 0.9 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <direction>-0.2 0.1 -1</direction>
+    </light>
+
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <!-- Ground -->
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>30 30</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>30 30</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.55 0.55 0.55 1</ambient>
+            <diffuse>0.55 0.55 0.55 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ================= OBSTACLES IN +X ================= -->
+
+    <model name="obs_1">
+      <static>true</static>
+      <pose>0.72 -0.15 0.12 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.20 0.20 0.24</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.20 0.20 0.24</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="obs_2">
+      <static>true</static>
+      <pose>1.55 0.42 0.14 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><cylinder><radius>0.14</radius><length>0.28</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.14</radius><length>0.28</length></cylinder></geometry>
+          <material>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="obs_3">
+      <static>true</static>
+      <pose>2.35 -0.55 0.15 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.24 0.24 0.30</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.24 0.24 0.30</size></box></geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="obs_4">
+      <static>true</static>
+      <pose>3.10 0.62 0.13 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><cylinder><radius>0.13</radius><length>0.26</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.13</radius><length>0.26</length></cylinder></geometry>
+          <material>
+            <ambient>1 1 0 1</ambient>
+            <diffuse>1 1 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ================= INVERTED L WALL ================= -->
+
+    <model name="wall_front">
+      <static>true</static>
+      <pose>4.30 -0.123 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.20 3.2 0.50</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.20 3.2 0.50</size></box></geometry>
+          <material>
+            <ambient>0.8 0.3 0.8 1</ambient>
+            <diffuse>0.8 0.3 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="wall_side">
+      <static>true</static>
+      <pose>2.75 -1.55 0.25 0 0 1.5708</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.20 3.2 0.50</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.20 3.2 0.50</size></box></geometry>
+          <material>
+            <ambient>0.2 0.8 0.8 1</ambient>
+            <diffuse>0.2 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>

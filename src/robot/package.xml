@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>robot</name>
+  <version>0.0.0</version>
+  <description>Obstacle avoidance robot with SLAM</description>
+  <maintainer email="sparsh@todo.todo">sparsh</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- Core ROS2 -->
+  <depend>rclpy</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <!-- FIX: nav_msgs was missing (used by /odom bridge) -->
+  <depend>nav_msgs</depend>
+  <!-- FIX: tf2_msgs was missing (used by /tf bridge) -->
+  <depend>tf2_msgs</depend>
+  <!-- FIX: rosgraph_msgs was missing (used by /clock bridge) -->
+  <depend>rosgraph_msgs</depend>
+
+  <!-- Robot description / TF -->
+  <depend>robot_state_publisher</depend>
+  <depend>joint_state_publisher</depend>
+
+  <!-- Gazebo / bridge -->
+  <depend>ros_gz_sim</depend>
+  <depend>ros_gz_bridge</depend>
+
+  <!-- FIX: slam_toolbox was missing (required for SLAM mapping) -->
+  <depend>slam_toolbox</depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
